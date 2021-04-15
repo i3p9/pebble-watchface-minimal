@@ -14,13 +14,10 @@ int main(void) {
 static void init(){
 	init_watchface();
 
-	//Register with TickerTimeService
-	update_time();
+	update_time(); // init time
 	tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
 
-	//Register for battery level updates
-	battery_state_service_subscribe(battery_handler);
-	//Initial Battery Update
+	battery_state_service_subscribe(battery_handler); //init battery
 	battery_handler(battery_state_service_peek());
 }
 
